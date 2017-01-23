@@ -1,1 +1,1 @@
-# dqmconfig
+# ProtoDUNE Data Quality Management
