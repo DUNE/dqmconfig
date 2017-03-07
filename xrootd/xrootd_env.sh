@@ -13,6 +13,8 @@ export PATH=$PATH:$XROOTD_BASE/bin
 
 export XROOTD_EXPORT=/home/maxim/p3sdata/
 export XROOTD_AUTH_FILE=/home/maxim/auth_file/
+export XROOTD_CFG_FILE=/home/maxim/projects/dqmconfig/xrootd/x.cfg
+
 export XROOTD_XRDR=sagacity.local
 export XROOTD_LOGDIR=/tmp/$XROOTD_USER/p3s/xrootd/
 
