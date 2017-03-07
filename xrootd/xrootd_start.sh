@@ -1,3 +1,3 @@
 #!/bin/bash
-cmsd    -b -l /home/maxim/cmsd.log      -s cmsd.pid     -c client.cfg
-xrootd  -b -l /home/maxim/xrootd.log    -s xrootd.pid   -c client.cfg
+cmsd    -b -l $XROOTD_LOGDIR/cmsd.log      -s $XROOTD_LOGDIR/cmsd.pid     -c x.cfg
+xrootd  -b -l $XROOTD_LOGDIR/xrootd.log    -s $XROOTD_LOGDIR/xrootd.pid   -c x.cfg

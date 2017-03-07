@@ -1,3 +1,3 @@
 #!/bin/bash
-kill `cat xrootd.pid`
-kill `cat cmsd.pid`
+kill `cat $XROOTD_LOGDIR/xrootd.pid`
+kill `cat $XROOTD_LOGDIR/cmsd.pid`
