@@ -1,0 +1,6 @@
+executable = /afs/cern.ch/user/m/mxp/condorTest/psub.sh
+getenv = True
+output = /eos/experiment/neutplatform/protodune/np04tier0/p3s/output/t.$(ClusterID).$(ProcID).out
+error = /eos/experiment/neutplatform/protodune/np04tier0/p3s/error/t.$(ClusterID).$(ProcID).err
+log = /eos/experiment/neutplatform/protodune/np04tier0/p3s/log/t.$(ClusterID).$(ProcID).log
+queue $(P3S_PILOTS)
