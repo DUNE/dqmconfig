@@ -1,0 +1,7 @@
+executable = /bin/env
+getenv = True
+output = /eos/experiment/neutplatform/protodune/np04tier0/p3s/output/t.$(ClusterID).$(ProcID).out
+error = /eos/experiment/neutplatform/protodune/np04tier0/p3s/error/t.$(ClusterID).$(ProcID).err
+log = /eos/experiment/neutplatform/protodune/np04tier0/p3s/log/t.$(ClusterID).$(ProcID).log
++JobFlavour = "microcentury"
+queue
