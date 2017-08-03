@@ -1,7 +1,7 @@
-executable = /bin/env
+executable = /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/helloworld.sh
 getenv = True
-output = /eos/experiment/neutplatform/protodune/np04tier0/p3s/output/t.$(ClusterID).$(ProcID).out
-error = /eos/experiment/neutplatform/protodune/np04tier0/p3s/error/t.$(ClusterID).$(ProcID).err
-log = /eos/experiment/neutplatform/protodune/np04tier0/p3s/log/t.$(ClusterID).$(ProcID).log
-+JobFlavour = "microcentury"
+output = /eos/experiment/neutplatform/protodune/np04tier0/p3s/output/helloworld.$(ClusterID).$(ProcID).out
+error = /eos/experiment/neutplatform/protodune/np04tier0/p3s/error/helloworld.$(ClusterID).$(ProcID).err
+log = /eos/experiment/neutplatform/protodune/np04tier0/p3s/log/helloworld.$(ClusterID).$(ProcID).log
++MaxRuntime = 100
 queue
