@@ -1,0 +1,1 @@
+*/10 * * * * /home/maxim/projects/dqmconfig/crontab/crntst.sh
