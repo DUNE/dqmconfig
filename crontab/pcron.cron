@@ -1,2 +1,2 @@
-#!/bin/bash
-/bin/date >> /tmp/crntst.out
+*/10 * * * * /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/pcalc.sh
+
