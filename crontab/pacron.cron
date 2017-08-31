@@ -1,1 +1,1 @@
-42,47,52 * * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/pcalc.sh
+30 1,9,17 * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/pcalc.sh

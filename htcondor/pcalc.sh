@@ -9,7 +9,10 @@ if [ -z ${P3S_PILOTS+x} ];
 then exit;
 fi
 
+source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
+
 p=`$P3S_HOME/clients/summary.py -p`
+
 if [[ $p < $P3S_PILOTS ]];
 then
     echo required pilots:$P3S_PILOTS, detected:$p ;
