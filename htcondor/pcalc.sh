@@ -4,7 +4,7 @@ if [ -z ${P3S_PILOTS+x} ];
 then exit;
 fi
 
-p=`echo 10`
+p=`/afs/cern.ch/user/m/mxp/projects/p3s/clients/summary.py -p`
 if [[ $p < $P3S_PILOTS ]];
 then
     echo required pilots:$P3S_PILOTS, detected:$p ;
