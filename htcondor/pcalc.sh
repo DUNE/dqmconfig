@@ -21,7 +21,7 @@ fi
 
 source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 
-to=`$P3S_HOME/clients/TO.py -p`
+to=`$P3S_HOME/clients/TO.py`
 echo to:$to
 
 p=`$P3S_HOME/clients/summary.py -p`
