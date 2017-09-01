@@ -21,6 +21,9 @@ fi
 
 source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 
+purge=`$P3S_HOME/clients/purge.py -w pilot -s timeout`
+echo $purge
+
 to=`$P3S_HOME/clients/TO.py`
 echo timeout:$to
 
