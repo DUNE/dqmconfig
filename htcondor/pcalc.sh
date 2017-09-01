@@ -21,16 +21,20 @@ fi
 
 source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 
-to=`$P3S_HOME/clients/TO.py`
-echo to:$to
+#to=`$P3S_HOME/clients/TO.py`
+#echo to:$to
 
 p=`$P3S_HOME/clients/summary.py -p`
 
-echo detected pilots:$p
+echo required pilots:$P3S_PILOTS, detected:$p ;
 
-if [[ $p < $P3S_PILOTS ]];
+#if (( $p < $P3S_PILOTS ));
+#then
+#    echo !
+#fi
+
+if (( $p < $P3S_PILOTS ));
 then
-    echo required pilots:$P3S_PILOTS, detected:$p ;
     toSub=$(( P3S_PILOTS-p ));
     echo $toSub
     condor_submit N=$toSub $DQM_HOME/htcondor/psub.jdl
