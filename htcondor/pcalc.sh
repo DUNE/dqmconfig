@@ -3,13 +3,16 @@
 export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
 export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
 
-source $P3S_HOME/configuration/p3s_lx_setup.sh
+source $P3S_HOME/configuration/lxvm.sh
 
 if [ -z ${P3S_PILOTS+x} ];
 then exit;
 fi
 
 source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
+
+to=`$P3S_HOME/clients/TO.py -p`
+echo to:$to
 
 p=`$P3S_HOME/clients/summary.py -p`
 
