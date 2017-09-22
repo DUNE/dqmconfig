@@ -12,6 +12,7 @@ export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
 export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
 
 source $P3S_HOME/configuration/lxvm.sh
+source /afs/cern.ch/user/m/mxp/nPilots.sh
 
 if [ -z ${P3S_PILOTS+x} ];
 then
