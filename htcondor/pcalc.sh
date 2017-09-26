@@ -30,14 +30,9 @@ echo purge:$purge
 p=`$P3S_HOME/clients/summary.py -p`
 echo required pilots:$P3S_PILOTS, detected:$p ;
 
-#if (( $p < $P3S_PILOTS ));
-#then
-#    echo !
-#fi
-
 if (( $p < $P3S_PILOTS ));
 then
     toSub=$(( P3S_PILOTS-p ));
     echo $toSub
-    condor_submit N=$toSub $DQM_HOME/htcondor/psub.jdl
+    condor_submit N=$toSub CONDORLOG=$P3S_CONDOR_LOG CONDOROUTPUT=$P3S_CONDOR_OUTPUT CONDORERROR=$P3S_CONDOR_ERROR MAXRUNTIME=$P3S_PILOT_MAXRUNTIME $DQM_HOME/htcondor/psub.jdl
 fi

@@ -1,7 +1,7 @@
 executable = /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/psub.sh
 getenv = True
-output = /eos/experiment/neutplatform/protodune/np04tier0/p3s/condorOutput/p3s.$(ClusterID).$(ProcID).out
-error = /eos/experiment/neutplatform/protodune/np04tier0/p3s/error/p3s.$(ClusterID).$(ProcID).err
-log = /eos/experiment/neutplatform/protodune/np04tier0/p3s/log/p3s.$(ClusterID).$(ProcID).log
-+MaxRuntime = 90000
+output = $(CONDOROUTPUT)/p3s.$(ClusterID).$(ProcID).out
+error = $(CONDORERROR)/p3s.$(ClusterID).$(ProcID).err
+log = $(CONDORLOG)/p3s.$(ClusterID).$(ProcID).log
++MaxRuntime = $(MAXRUNTIME)
 queue $(N)
