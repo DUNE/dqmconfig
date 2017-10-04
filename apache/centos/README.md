@@ -11,4 +11,11 @@ conf  conf.d  conf.modules.d  logs  modules  run
 autoindex.conf  django.conf  php.conf  README  userdir.conf  welcome.conf
 ```
 
+/etc/httpd/conf - no substabtial changes
+
+/etc/httpd/conf.d - django.conf crucial
+* contains a reference to "settings.py"
+
+
+
 
