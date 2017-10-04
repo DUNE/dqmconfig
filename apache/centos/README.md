@@ -16,6 +16,4 @@ autoindex.conf  django.conf  php.conf  README  userdir.conf  welcome.conf
 /etc/httpd/conf.d - django.conf crucial
 * contains a reference to "settings.py"
 
-
-
-
+/etc/httpd/conf.modules.d/00-base.conf - must contain an entry for wsgi
