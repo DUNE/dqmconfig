@@ -1,0 +1,8 @@
+executable = /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/psub.sh
+getenv = True
+output = $(CONDOROUTPUT)/p3s.$(ClusterID).$(ProcID).out
+error = $(CONDORERROR)/p3s.$(ClusterID).$(ProcID).err
+arguments = "'-e $(ClusterID).$(ProcID)'"
+log = $(CONDORLOG)/p3s.$(ClusterID).$(ProcID).log
++MaxRuntime = $(MAXRUNTIME)
+queue $(N)
