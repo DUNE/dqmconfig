@@ -25,7 +25,7 @@ fi
 
 
 
-N=`find $outdir -maxdepth 1 -mindepth 1 -mmin +1200 -exec ls -ld  {} \; | wc -l`
+N=`find $outdir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {} \; | wc -l`
 echo $N directories found exceeding the data lifetime of $DQM_DATA_LIFE minutes
 
 find $outdir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \;
