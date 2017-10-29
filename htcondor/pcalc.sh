@@ -11,7 +11,7 @@ fi
 export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
 export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
 
-source $P3S_HOME/configuration/lxvm.sh
+source $P3S_HOME/configuration/lxvm.sh > /dev/null
 
 if [ -z ${P3S_PILOTS+x} ];
 then
@@ -27,6 +27,6 @@ echo required pilots:$P3S_PILOTS, detected:$p ;
 if (( $p < $P3S_PILOTS ));
 then
     toSub=$(( P3S_PILOTS-p ));
-    echo $toSub
+    echo Sumbitting $toSub pilots
     condor_submit N=$toSub CONDORLOG=$P3S_CONDOR_LOG CONDOROUTPUT=$P3S_CONDOR_OUTPUT CONDORERROR=$P3S_CONDOR_ERROR MAXRUNTIME=$P3S_PILOT_MAXRUNTIME $DQM_HOME/htcondor/psub.jdl
 fi
