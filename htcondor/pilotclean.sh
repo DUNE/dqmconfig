@@ -12,7 +12,7 @@ to=`$P3S_HOME/clients/TO.py -t $P3S_PILOT_TO`
 
 if [[ $to != "" ]];
 then
-echo timeout:$to
+echo $to
 fi
 
 #echo $to
