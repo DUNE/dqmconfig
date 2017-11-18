@@ -1,4 +1,5 @@
 1,11,21,31,41,51 * * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/p3s/clients/tscan.sh -20 Proto
 01 * * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/pilotclean.sh
+01 15 * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/pilotpurge.sh
 10 * * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/dqmconfig/htcondor/pcalc.sh
 01 12 * * * lxplus.cern.ch /afs/cern.ch/user/m/mxp/projects/dqmconfig/services/olddata.sh
