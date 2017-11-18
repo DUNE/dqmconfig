@@ -26,9 +26,11 @@ fi
 
 
 N=`find $outdir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {} \; | wc -l`
-echo $N directories found exceeding the data lifetime of $DQM_DATA_LIFE minutes
 
 find $outdir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \;
 
 usedDisk=`du -sh $outdir`
-echo Used space after cleaning: $usedDisk
+
+message="$N directories found exceeding the data lifetime of $DQM_DATA_LIFE minutes. Used space after cleaning: $usedDisk"
+
+$P3S_HOME/clients/service.py -n OldData -m $message
