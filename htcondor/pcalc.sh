@@ -2,6 +2,13 @@
 
 idle=`/usr/bin/condor_q | tail -1 | cut -d' ' -f 7`
 
+re='^[0-9]+$'
+if ! [[ $idle =~ $re ]] ; then
+    echo "error: Not a number" >&2
+    echo $idle
+    exit 1
+fi
+
 if (( $idle > 0 ));
 then
     echo $idle idling condor jobs found, exiting
