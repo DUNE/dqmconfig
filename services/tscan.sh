@@ -24,6 +24,11 @@ source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
 export P3S_INPUT_DIR=$P3S_DIRPATH/input
 
+if [ ! -d "$P3S_INPUT_DIR" ]; then
+    $P3S_HOME/clients/service.py -n tscan -m "Problem with directory $P3S_INPUT_DIR$"
+    exit 1
+fi
+
 cd $P3S_INPUT_DIR
 d=`pwd`
 # echo Directory: $d
