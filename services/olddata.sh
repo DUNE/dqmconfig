@@ -33,4 +33,4 @@ usedDisk=`du -sh $outdir`
 
 message="$N directories found exceeding the data lifetime of $DQM_DATA_LIFE minutes. Used space after cleaning: $usedDisk"
 
-$P3S_HOME/clients/service.py -n OldData -m "$message"
+$P3S_HOME/clients/service.py -n olddata -m "$message"
