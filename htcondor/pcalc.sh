@@ -35,7 +35,7 @@ p=`$P3S_HOME/clients/summary.py -p`
 if (( $p < $P3S_PILOTS ));
 then
     toSub=$(( P3S_PILOTS-p ));
-    msg="Required pilots:$P3S_PILOTS, detected:$p, sumbitting $toSub"
+    msg="Required pilots:$P3S_PILOTS, detected:$p, submit $toSub"
     $P3S_HOME/clients/service.py -m "$msg" -n pcalc
     condor_submit N=$toSub CONDORLOG=$P3S_CONDOR_LOG CONDOROUTPUT=$P3S_CONDOR_OUTPUT CONDORERROR=$P3S_CONDOR_ERROR MAXRUNTIME=$P3S_PILOT_MAXRUNTIME $DQM_HOME/htcondor/psub.jdl > /dev/null
 fi
