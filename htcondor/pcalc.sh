@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
+export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
+
+source $P3S_HOME/configuration/lxvm.sh > /dev/null
+source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
+
+
 idle=`/usr/bin/condor_q | tail -1 | cut -d' ' -f 7`
 
 re='^[0-9]+$'
@@ -11,15 +19,9 @@ fi
 
 if (( $idle > 0 ));
 then
-    echo $idle idling condor jobs found, exiting
+    $P3S_HOME/clients/service.py -m "$idle idling condor jobs found, exiting" -n pcalc
     exit
 fi
-
-export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
-export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
-
-source $P3S_HOME/configuration/lxvm.sh > /dev/null
-source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 
 
 if [ -z ${P3S_PILOTS+x} ];
