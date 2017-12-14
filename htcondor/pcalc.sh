@@ -19,14 +19,14 @@ export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
 export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
 
 source $P3S_HOME/configuration/lxvm.sh > /dev/null
+source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
+
 
 if [ -z ${P3S_PILOTS+x} ];
 then
-    echo P3S_PILOTS undefined, exiting
+    $P3S_HOME/clients/service.py -m "$P3S_PILOTS undefined, exiting" -n pcalc
     exit
 fi
-
-source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 
 p=`$P3S_HOME/clients/summary.py -p`
 
