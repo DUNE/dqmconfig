@@ -12,8 +12,10 @@ idle=`/usr/bin/condor_q | tail -1 | cut -d' ' -f 7`
 
 re='^[0-9]+$'
 if ! [[ $idle =~ $re ]] ; then
-    echo "error: Not a number" >&2
-    echo $idle
+    # echo "error: Not a number" >&2
+    mess=`echo $idle`
+    $P3S_HOME/clients/service.py -m "error: $mess" -n pcalc
+    # echo $idle
     exit 1
 fi
 
