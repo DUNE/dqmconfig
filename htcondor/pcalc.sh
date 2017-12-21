@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# basic way to match to numeric
+re='^[0-9]+$'
 
 export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
 export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
@@ -7,10 +9,8 @@ export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
 source $P3S_HOME/configuration/lxvm.sh > /dev/null
 source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
 
+idle=`/usr/bin/condor_q 2>&1| tail -1 | cut -d' ' -f 7`
 
-idle=`/usr/bin/condor_q | tail -1 | cut -d' ' -f 7`
-
-re='^[0-9]+$'
 if ! [[ $idle =~ $re ]] ; then
     # echo "error: Not a number" >&2
     mess=`echo $idle`
