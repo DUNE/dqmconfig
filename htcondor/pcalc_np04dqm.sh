@@ -6,7 +6,7 @@ re='^[0-9]+$'
 export P3S_HOME=/afs/cern.ch/user/n/np04dqm/projects/p3s
 export DQM_HOME=/afs/cern.ch/user/n/np04dqm/projects/dqmconfig
 
-source $P3S_HOME/configuration/lxvm.sh > /dev/null
+source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 source /afs/cern.ch/user/n/np04dqm/public/vp3s/bin/activate
 
 idle=`/usr/bin/condor_q 2>&1| tail -1 | cut -d' ' -f 7`
