@@ -1,4 +1,4 @@
-01 * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/projects/dqmconfig/htcondor/pilotclean_np04dqm.sh
-01 15 * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/projects/dqmconfig/htcondor/pilotpurge_np04dqm.sh
-10 * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/projects/dqmconfig/htcondor/pcalc_np04dqm.sh
-
+01 * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig/htcondor/pilotclean_np04dqm.sh
+01 15 * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig/htcondor/pilotpurge_np04dqm.sh
+10 * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig/htcondor/pcalc_np04dqm.sh
+00,10,20,30,40,50 * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/p3s/inputs/larsoft/merge/lxdqm_acc_init_1.sh
