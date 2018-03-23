@@ -45,6 +45,6 @@ find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \
 usedDisk2=`du -sh $targetDir | sed 's/\s.*//'`
 
 
-message="$targetDir: $N items found older than $DQM_DATA_LIFE minutes. Space bedore/after cleaning: $usedDisk1/$usedDisk2"
+message="$targetDir: $N items older than $DQM_DATA_LIFE min. Space before/after cleaning: $usedDisk1/$usedDisk2"
 
 $P3S_HOME/clients/service.py -n olddata -m "$message"
