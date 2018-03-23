@@ -32,6 +32,10 @@ then
     exit
 fi
 
+if [ ! -z "$2" ];
+then
+    export DQM_DATA_LIFE=$2
+fi
 
 
 N=`find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {} \; | wc -l`
@@ -39,12 +43,6 @@ N=`find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {
 find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \;
 
 usedDisk2=`du -sh $targetDir | sed 's/\s.*//'`
-
-if [ ! -z "$2" ];
-then
-    export DQM_DATA_LIFE=$2
-    exit
-fi
 
 
 message="$targetDir: $N items found older than $DQM_DATA_LIFE minutes. Space bedore/after cleaning: $usedDisk1/$usedDisk2"
