@@ -17,7 +17,7 @@ fi
 
 
 
-usedDisk1=`du -sh $targetDir`
+usedDisk1=`du -sh $targetDir | sed 's/\s.*//'`
 # echo Used space before cleaning: $usedDisk1
 
 cd $targetDir
@@ -38,8 +38,15 @@ N=`find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {
 
 find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \;
 
-usedDisk2=`du -sh $targetDir`
+usedDisk2=`du -sh $targetDir | sed 's/\s.*//'`
 
-message="$N directories found exceeding the data lifetime of $DQM_DATA_LIFE minutes. Used space bedore/after cleaning: $usedDisk1/$usedDisk2"
+if [ ! -z "$2" ];
+then
+    export DQM_DATA_LIFE=$2
+    exit
+fi
+
+
+message="$targetDir: $N items found older than $DQM_DATA_LIFE minutes. Space bedore/after cleaning: $usedDisk1/$usedDisk2"
 
 $P3S_HOME/clients/service.py -n olddata -m "$message"
