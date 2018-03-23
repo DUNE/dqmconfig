@@ -1,27 +1,26 @@
 #!/bin/bash
 
-export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
-export DQM_HOME=/afs/cern.ch/user/m/mxp/projects/dqmconfig
+
+export P3S_HOME=/afs/cern.ch/user/n/np04dqm/public/p3s/p3s
+export DQM_HOME=/afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig
 
 source $P3S_HOME/configuration/lxvm.sh > /dev/null
 
+source /afs/cern.ch/user/n/np04dqm/public/vp3s/bin/activate
 
-# echo Activating venv at lxvm
-source /afs/cern.ch/user/m/mxp/vp3s/bin/activate
-export P3S_HOME=/afs/cern.ch/user/m/mxp/projects/p3s
-export outdir=$P3S_DIRPATH/output
+export targetDir=$P3S_DIRPATH/$1
 
-if [ ! -d "$outdir" ]; then
-    $P3S_HOME/clients/service.py -n tscan -m "Problem with directory $outdir"
+if [ ! -d "$targetDir" ]; then
+    $P3S_HOME/clients/service.py -n tscan -m "Problem with directory $targetDir"
     exit 1
 fi
 
 
 
-usedDisk1=`du -sh $outdir`
+usedDisk1=`du -sh $targetDir`
 # echo Used space before cleaning: $usedDisk1
 
-cd $outdir
+cd $targetDir
 
 curdir=`pwd`
 
@@ -32,15 +31,14 @@ then
     echo GOT INTO AFS, EXITING
     exit
 fi
-    
 
 
 
-N=`find $outdir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {} \; | wc -l`
+N=`find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec ls -ld  {} \; | wc -l`
 
-find $outdir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \;
+find $targetDir -maxdepth 1 -mindepth 1 -mmin +$DQM_DATA_LIFE -exec rm -fr  {} \;
 
-usedDisk2=`du -sh $outdir`
+usedDisk2=`du -sh $targetDir`
 
 message="$N directories found exceeding the data lifetime of $DQM_DATA_LIFE minutes. Used space bedore/after cleaning: $usedDisk1/$usedDisk2"
 
