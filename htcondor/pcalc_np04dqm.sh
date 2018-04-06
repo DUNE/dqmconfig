@@ -3,8 +3,8 @@
 # basic way to match to numeric
 re='^[0-9]+$'
 
-export P3S_HOME=/afs/cern.ch/user/n/np04dqm/projects/p3s
-export DQM_HOME=/afs/cern.ch/user/n/np04dqm/projects/dqmconfig
+export P3S_HOME=/afs/cern.ch/user/n/np04dqm/public/p3s/p3s
+export DQM_HOME=/afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig
 
 source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 source /afs/cern.ch/user/n/np04dqm/public/vp3s/bin/activate
