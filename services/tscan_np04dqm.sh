@@ -12,11 +12,12 @@ source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 Nargs=$#
 
 
-if [ $Nargs -lt 3 ]; then
+if [ $Nargs -lt 4 ]; then
     echo Wrong number of arguments - expecting at least 2 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
     echo \* wildcard or part of it e.g. Proto
+    echo \* path to the JSON description of the job to be created
     echo \* Debug option
     exit
 fi
@@ -36,7 +37,7 @@ d=`pwd`
 
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*" | sed 's/\.\///'`
 
-if [ ! -z "$3" ]; then
+if [ ! -z "$4" ]; then
     echo Directory: $d
     echo Files:$files
 fi
@@ -47,15 +48,10 @@ $P3S_HOME/clients/service.py -n tscan -m "$files"
 
 for f in $files
 do
-if [ ! -z "$3" ]; then
+if [ ! -z "$4" ]; then
     echo '->' $f
 fi
-
-$P3S_HOME/clients/dataset.py -h
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/evdisp_main.json
-
-#    $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_crt_tpc_3.json -N
-#    $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_purity_5.json
+$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $3  # was: $P3S_HOME/inputs/larsoft/evdisp/evdisp_main.json
 done
 
 exit
