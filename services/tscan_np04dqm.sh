@@ -11,11 +11,12 @@ source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 
 Nargs=$#
 
-if [ ! $Nargs -eq 2 ]; then
-    echo Wrong number of arguments - expecting 2 - exiting...
+if [ ! $Nargs -lt 3 ]; then
+    echo Wrong number of arguments - expecting at least 2 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
     echo \* wildcard or part of it e.g. Proto
+    echo \* Debug option
     exit
 fi
 
@@ -31,11 +32,13 @@ fi
 
 cd $P3S_INPUT_DIR
 d=`pwd`
-# echo Directory: $d
 
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*" | sed 's/\.\///'`
 
-# echo Files:$files
+if [ -z "$3" ]; then
+    echo Directory: $d
+    echo Files:$files
+fi
 
 $P3S_HOME/clients/service.py -n tscan -m "$files"
 
@@ -43,7 +46,11 @@ $P3S_HOME/clients/service.py -n tscan -m "$files"
 
 for f in $files
 do
-#    echo ! $f
+if [ -z "$3" ]; then
+    echo ! $f
+fi
+
+
     $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_evdisp_7.json
 #    $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_crt_tpc_3.json -N
 #    $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_purity_5.json
