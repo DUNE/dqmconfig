@@ -37,7 +37,7 @@ d=`pwd`
 
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*" | sed 's/\.\///'`
 
-if [ -z "$3" ]; then
+if [ ! -z "$3" ]; then
     echo Directory: $d
     echo Files:$files
 fi
@@ -48,7 +48,7 @@ $P3S_HOME/clients/service.py -n tscan -m "$files"
 
 for f in $files
 do
-if [ -z "$3" ]; then
+if [ ! -z "$3" ]; then
     echo ! $f
 fi
 
