@@ -52,7 +52,7 @@ if [ ! -z "$3" ]; then
 fi
 
 $P3S_HOME/clients/dataset.py -h
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/lxdqm_evdisp_7.json
+$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/evdisp_main.json
 
 #    $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_crt_tpc_3.json -N
 #    $P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/lxdqm_purity_5.json
