@@ -42,7 +42,7 @@ if [ ! -z "$4" ]; then
     echo Files:$files
 fi
 
-$P3S_HOME/clients/service.py -n tscan -m "$files"
+# $P3S_HOME/clients/service.py -n tscan -m "$files"
 
 # echo ${#files[@]}
 
