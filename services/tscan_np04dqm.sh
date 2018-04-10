@@ -13,7 +13,7 @@ Nargs=$#
 
 
 if [ $Nargs -lt 4 ]; then
-    echo Wrong number of arguments - expecting at least 2 - exiting...
+    echo Wrong number of arguments - expecting at least 3 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
     echo \* wildcard or part of it e.g. Proto
@@ -48,10 +48,12 @@ $P3S_HOME/clients/service.py -n tscan -m "$files"
 
 for f in $files
 do
-if [ ! -z "$4" ]; then
+if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
     echo '->' $f
 fi
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $3  # was: $P3S_HOME/inputs/larsoft/evdisp/evdisp_main.json
+$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $3 $5
+
+# J was: $P3S_HOME/inputs/larsoft/evdisp/evdisp_main.json
 done
 
 exit
