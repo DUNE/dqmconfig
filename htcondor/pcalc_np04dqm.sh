@@ -25,6 +25,7 @@ then
     exit
 fi
 
+export P3S_PILOTS=`$P3S_HOME/clients/siteinfo.py -s lxvm -w pilots`
 
 if [ -z ${P3S_PILOTS+x} ];
 then
