@@ -12,7 +12,7 @@ source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 Nargs=$#
 
 
-if [ $Nargs -lt 4 ]; then
+if [ $Nargs -lt 3 ]; then
     echo Wrong number of arguments - expecting at least 3 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
