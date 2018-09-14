@@ -36,9 +36,11 @@ d=`pwd`
 
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*.root" | sed 's/\.\///'`
 
+verb = 0
 if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
     echo Directory: $d
     echo Files:$files
+    verb=2
 fi
 
 # $P3S_HOME/clients/service.py -n tscan -m "$files"
@@ -51,9 +53,9 @@ if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
     echo '->' $f
 fi
 
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
+$P3S_HOME/clients/dataset.py -v $verb -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
+$P3S_HOME/clients/dataset.py -v $verb -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
+$P3S_HOME/clients/dataset.py -v $verb -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
 
 done
 
