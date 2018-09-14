@@ -17,7 +17,6 @@ if [ $Nargs -lt 4 ]; then
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
     echo \* wildcard or part of it e.g. Proto
-    echo \* path to the JSON description of the job to be created
     echo \* Debug option
     exit
 fi
@@ -37,7 +36,7 @@ d=`pwd`
 
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*.root" | sed 's/\.\///'`
 
-if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
+if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
     echo Directory: $d
     echo Files:$files
 fi
@@ -48,14 +47,14 @@ fi
 
 for f in $files
 do
-if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
+if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
     echo '->' $f
 fi
-$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $3 $5
 
-# J was: $P3S_HOME/inputs/larsoft/evdisp/evdisp_main.json
+$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
+$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
+$P3S_HOME/clients/dataset.py -v 0 -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
+
 done
 
 exit
-
-# env | grep P3
