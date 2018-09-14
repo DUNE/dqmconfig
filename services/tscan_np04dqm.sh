@@ -35,9 +35,9 @@ fi
 cd $P3S_INPUT_DIR
 d=`pwd`
 
-files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*" | sed 's/\.\///'`
+files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +1 -name "$2*.root" | sed 's/\.\///'`
 
-if [ ! -z "$4" ]; then
+if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
     echo Directory: $d
     echo Files:$files
 fi
