@@ -36,7 +36,7 @@ d=`pwd`
 
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +2G -name "$2*.root" | sed 's/\.\///'`
 
-verb = 0
+verb=0
 if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
     echo Directory: $d
     echo Files:$files
