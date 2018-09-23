@@ -16,7 +16,7 @@ if [ $Nargs -lt 4 ]; then
     echo Wrong number of arguments - expecting at least 3 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
-    echo \* min size (e.g. +7G)
+    echo \* min size \(e.g. +7G\)
     echo \* wildcard or part of it e.g. Proto
     echo \* Debug option
     exit
