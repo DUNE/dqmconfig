@@ -49,6 +49,7 @@ fi
 # echo ${#files[@]}
 
 COUNTER=0
+MAX=3
 
 for f in $files
 do
@@ -66,7 +67,7 @@ if [ ! -z "$4" ] && [ "$4" != 'T' ]; then
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
 fi
 let COUNTER=COUNTER+1
-if [ "$COUNTER" -eq 3]; then
+if [ "$COUNTER" -eq "$MAX" ]; then
     break
 fi
 
