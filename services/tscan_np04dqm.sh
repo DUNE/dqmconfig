@@ -12,12 +12,13 @@ source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 Nargs=$#
 
 
-if [ $Nargs -lt 4 ]; then
+if [ $Nargs -lt 5 ]; then
     echo Wrong number of arguments - expecting at least 3 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
     echo \* min size \(e.g. +7G\)
-    echo \* wildcard or part of it e.g. Proto
+    echo \* wildcard or part of it e.g. np04
+    echo \* max number of job groups to be created within a single invocation
     echo \* Debug option
     exit
 fi
@@ -49,25 +50,24 @@ fi
 # echo ${#files[@]}
 
 COUNTER=0
-MAX=3
 
 for f in $files
 do
-if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
+if [ ! -z "$5" ] && [ "$5" == 'D' ]; then
     echo '->' $f
 fi
 
-if [ ! -z "$4" ] && [ "$4" == 'T' ]; then
+if [ ! -z "$5" ] && [ "$5" == 'T' ]; then
     echo '->' $f
 fi
 
-if [ ! -z "$4" ] && [ "$4" != 'T' ]; then
+if [ ! -z "$5" ] && [ "$5" != 'T' ]; then
     $P3S_HOME/clients/dataset.py -v $verb -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
 fi
 let COUNTER=COUNTER+1
-if [ "$COUNTER" -eq "$MAX" ]; then
+if [ "$COUNTER" -eq "$4" ]; then
     break
 fi
 
