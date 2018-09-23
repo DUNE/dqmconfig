@@ -12,10 +12,11 @@ source $P3S_HOME/configuration/lxvm_np04dqm.sh > /dev/null
 Nargs=$#
 
 
-if [ $Nargs -lt 3 ]; then
+if [ $Nargs -lt 4 ]; then
     echo Wrong number of arguments - expecting at least 3 - exiting...
     echo Expecting:
     echo \* time window \(minutes\) to trigger on a modified file, needs to be negative for "newer than" and positive for "older than"
+    echo \* min size (e.g. +7G)
     echo \* wildcard or part of it e.g. Proto
     echo \* Debug option
     exit
@@ -34,10 +35,10 @@ fi
 cd $P3S_INPUT_DIR
 d=`pwd`
 
-files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size +8G -name "$2*.root" | sed 's/\.\///'`
+files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size $2 -name "$3*.root" | sed 's/\.\///'`
 
 verb=0
-if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
+if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
     echo Directory: $d
     echo Files:$files
     verb=2
@@ -49,13 +50,19 @@ fi
 
 for f in $files
 do
-if [ ! -z "$3" ] && [ "$3" == 'D' ]; then
+if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
     echo '->' $f
 fi
 
-$P3S_HOME/clients/dataset.py -v $verb -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
-$P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
-$P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
+if [ ! -z "$4" ] && [ "$4" == 'T' ]; then
+    echo '->' $f
+fi
+
+if [ ! -z "$4" ] && [ "$4" != 'T' ]; then
+    $P3S_HOME/clients/dataset.py -v $verb -g -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
+    $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
+    $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
+fi
 
 done
 
