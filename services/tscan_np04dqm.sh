@@ -45,6 +45,12 @@ if [ ! -z "$5" ] && [ "$5" == 'D' ]; then
     verb=2
 fi
 
+if [ ! -z "$5" ] && [ "$5" == 'T' ]; then
+    echo Directory: $d
+    echo Files:$files
+    verb=2
+fi
+
 # $P3S_HOME/clients/service.py -n tscan -m "$files"
 
 # echo ${#files[@]}
