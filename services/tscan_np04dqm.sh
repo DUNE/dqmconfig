@@ -39,7 +39,7 @@ d=`pwd`
 files=`find . -maxdepth 1 -mindepth 1 -mmin $1 -size $2 -name "$3*.root" | sed 's/\.\///'`
 
 verb=0
-if [ ! -z "$4" ] && [ "$4" == 'D' ]; then
+if [ ! -z "$5" ] && [ "$5" == 'D' ]; then
     echo Directory: $d
     echo Files:$files
     verb=2
@@ -64,6 +64,7 @@ fi
 if [ ! -z "$5" ] && [ "$5" != 'T' ]; then
     $P3S_HOME/clients/dataset.py -v $verb -g    -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
+    $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data_apa3zbeam.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/purity/purity_data.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/protoreco/protoreco_data_main.json
