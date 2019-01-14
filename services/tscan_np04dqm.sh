@@ -70,7 +70,8 @@ fi
 if [ ! -z "$5" ] && [ "$5" != 'T' ]; then
     $P3S_HOME/clients/dataset.py -v $verb -g    -i $d -f $f -J $P3S_HOME/inputs/larsoft/monitor/hitmonitor_data_main.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data.json
-    $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data_apa3zbeam.json
+# -mxp- disable the APA3 job type for the long cosmic run    
+#    $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/evdisp/eventdisplay_data_apa3zbeam.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/femb/fembcount_data.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/purity/purity_data.json
     $P3S_HOME/clients/dataset.py -v $verb -g -A -i $d -f $f -J $P3S_HOME/inputs/larsoft/protoreco/protoreco_data_main.json
