@@ -4,3 +4,4 @@
 1,21,41  * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig/services/tscan_np04dqm.sh -19 +3900M np04 3 Z
 # -mxp- throttle down the scan a little: was 1,16,31,46
 02,32 * * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig/services/xrdcheck.sh
+02 1 * * * lxplus.cern.ch /afs/cern.ch/user/n/np04dqm/public/p3s/dqmconfig/services/inputsize.sh
