@@ -17,7 +17,7 @@ if [ ! -d "$P3S_INPUT_DIR" ]; then
     exit 1
 fi
 
-cd $INPUT_DIR
+cd $P3S_INPUT_DIR
 f=`du -sh .| awk '{print $1}'`
 $P3S_HOME/clients/service.py -n inputsize -m $f
 
