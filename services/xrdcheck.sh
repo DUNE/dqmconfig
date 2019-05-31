@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Measure the time it takes to copy a standard size file via xrdcp
+
 export FILE=np04_raw_run000973_1_dl2.root
 
 export P3S_HOME=/afs/cern.ch/user/n/np04dqm/public/p3s/p3s
